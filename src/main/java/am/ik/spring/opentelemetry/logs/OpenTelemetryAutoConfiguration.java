@@ -10,14 +10,12 @@ import io.opentelemetry.sdk.resources.Resource;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 
 @AutoConfiguration
 @ConditionalOnClass({ SdkLoggerProvider.class, OpenTelemetry.class })
-@ConditionalOnBean(Resource.class)
 public class OpenTelemetryAutoConfiguration {
 
 	@Bean
