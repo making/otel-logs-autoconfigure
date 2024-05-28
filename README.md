@@ -13,7 +13,7 @@ This is an experimental project to address https://github.com/spring-projects/sp
 </dependency>
 ```
 > [!NOTE]
-> Please ensure that am.ik.spring.opentelemetry:otel-logs-autoconfigure is defined before io.micrometer:micrometer-tracing-bridge-otel so that the intended version of io.opentelemetry.semconv:opentelemetry-semconv is used.
+> Please ensure that `am.ik.spring.opentelemetry:otel-logs-autoconfigure` is defined before `io.micrometer:micrometer-tracing-bridge-otel` so that the intended version of `io.opentelemetry.semconv:opentelemetry-semconv` is used.
 
 ## Configuration Properties for OtlpHttpLogRecordExporter
 
