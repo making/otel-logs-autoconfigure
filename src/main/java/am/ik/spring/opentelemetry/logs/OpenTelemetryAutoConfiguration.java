@@ -20,8 +20,9 @@ public class OpenTelemetryAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public BatchLogRecordProcessor batchLogRecordProcessor(LogRecordExporter logRecordExporter) {
-		return BatchLogRecordProcessor.builder(logRecordExporter).build();
+	public BatchLogRecordProcessor batchLogRecordProcessor(ObjectProvider<LogRecordExporter> logRecordExporters) {
+		return BatchLogRecordProcessor.builder(LogRecordExporter.composite(logRecordExporters.orderedStream().toList()))
+			.build();
 	}
 
 	@Bean
