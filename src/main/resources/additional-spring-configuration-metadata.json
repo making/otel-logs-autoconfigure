@@ -1,0 +1,49 @@
+{
+  "groups": [
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-code-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-experimental-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-key-value-pair-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-logger-context",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install",
+      "type": "java.lang.Integer",
+      "defaultValue": 1000
+    }
+  ],
+  "hints": []
+}
