@@ -35,6 +35,6 @@ management.opentelemetry.instrumentation.logback-appender.capture-experimental-a
 management.opentelemetry.instrumentation.logback-appender.capture-key-value-pair-attributes=false
 management.opentelemetry.instrumentation.logback-appender.capture-logger-context=false
 management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute=false
-management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes=
+management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes= # comma-separated names or `*`
 management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install=1000
 ```
