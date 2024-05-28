@@ -33,6 +33,7 @@ docker run --rm -p 4318:4318 ghcr.io/making/lognroll:jvm
 ```
 or
 ```
+# works only on amd64
 docker run --rm -p 4318:4318 ghcr.io/making/lognroll:native
 ```
 
