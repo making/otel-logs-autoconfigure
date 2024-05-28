@@ -1,0 +1,2 @@
+am.ik.spring.opentelemetry.logs.OpenTelemetryAutoConfiguration
+am.ik.spring.opentelemetry.logs.otlp.OtlpLogsAutoConfiguration
