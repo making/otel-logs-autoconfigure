@@ -24,6 +24,18 @@ management.otlp.logs.compression=gzip
 management.otlp.logs.timeout=10s
 ```
 
+If you need a quick and easy-to-use OTLP log receiver, please use [LogN'Roll](https://github.com/making/lognroll).
+
+You can try it immediately with the following commands:
+
+```
+docker run --rm -p 4318:4318 ghcr.io/making/lognroll:jvm
+```
+or
+```
+docker run --rm -p 4318:4318 ghcr.io/making/lognroll:native
+```
+
 ## Configuration Properties for the Logback Appender
 
 See https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library#settings-for-the-logback-appender for the details.
