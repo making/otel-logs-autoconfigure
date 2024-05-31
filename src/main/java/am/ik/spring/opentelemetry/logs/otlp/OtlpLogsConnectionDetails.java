@@ -18,8 +18,18 @@ package am.ik.spring.opentelemetry.logs.otlp;
 
 import org.springframework.boot.autoconfigure.service.connection.ConnectionDetails;
 
+/**
+ * Details required to establish a connection to an OpenTelemetry logs service.
+ *
+ * @author Toshiaki Maki
+ * @since 3.2.0
+ */
 public interface OtlpLogsConnectionDetails extends ConnectionDetails {
 
+	/**
+	 * Address to where logs will be published.
+	 * @return the address to where logs will be published
+	 */
 	String getUrl();
 
 }

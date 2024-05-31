@@ -21,10 +21,16 @@ import io.opentelemetry.exporter.otlp.http.logs.OtlpHttpLogRecordExporter;
 import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
 
+/**
+ * {@link EnableAutoConfiguration Auto-configuration} for OTLP Logs.
+ *
+ * @author Toshiaki Maki
+ */
 @AutoConfiguration
 @ConditionalOnClass({ SdkLoggerProvider.class, OpenTelemetry.class, OtlpHttpLogRecordExporter.class })
 @EnableConfigurationProperties(OtlpProperties.class)

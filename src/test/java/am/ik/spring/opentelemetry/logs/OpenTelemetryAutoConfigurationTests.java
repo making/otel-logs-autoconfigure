@@ -40,6 +40,11 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Tests for {@link OpenTelemetryAutoConfiguration}.
+ *
+ * @author Toshiaki Maki
+ */
 class OpenTelemetryAutoConfigurationTests {
 
 	private final ApplicationContextRunner contextRunner;

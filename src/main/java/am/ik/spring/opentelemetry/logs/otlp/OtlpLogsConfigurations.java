@@ -27,6 +27,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configurations imported by {@link OtlpLogsAutoConfiguration}.
+ *
+ * @author Toshiaki Maki
+ */
 public class OtlpLogsConfigurations {
 
 	@Configuration(proxyBeanMethods = false)
@@ -39,6 +44,9 @@ public class OtlpLogsConfigurations {
 			return new PropertiesOtlpLogsConnectionDetails(properties);
 		}
 
+		/**
+		 * Adapts {@link OtlpProperties} to {@link OtlpLogsConnectionDetails}.
+		 */
 		static class PropertiesOtlpLogsConnectionDetails implements OtlpLogsConnectionDetails {
 
 			private final OtlpProperties properties;

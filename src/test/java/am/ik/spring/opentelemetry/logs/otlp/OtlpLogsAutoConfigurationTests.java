@@ -33,6 +33,11 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Tests for {@link OtlpLogsAutoConfiguration}.
+ *
+ * @author Toshiaki Maki
+ */
 class OtlpLogsAutoConfigurationTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

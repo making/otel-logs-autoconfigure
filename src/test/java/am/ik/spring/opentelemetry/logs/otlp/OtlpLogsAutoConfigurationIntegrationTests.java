@@ -38,6 +38,11 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for {@link OtlpLogsAutoConfiguration}.
+ *
+ * @author Toshiaki Maki
+ */
 public class OtlpLogsAutoConfigurationIntegrationTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

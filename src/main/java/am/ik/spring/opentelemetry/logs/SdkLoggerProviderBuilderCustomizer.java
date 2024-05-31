@@ -16,11 +16,22 @@
 
 package am.ik.spring.opentelemetry.logs;
 
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.SdkLoggerProviderBuilder;
 
+/**
+ * Callback interface that can be used to customize the {@link SdkLoggerProviderBuilder}
+ * that is used to create the auto-configured {@link SdkLoggerProvider}.
+ *
+ * @author Toshiaki Maki
+ */
 @FunctionalInterface
 public interface SdkLoggerProviderBuilderCustomizer {
 
+	/**
+	 * Customize the given {@code builder}.
+	 * @param builder the builder to customize
+	 */
 	void customize(SdkLoggerProviderBuilder builder);
 
 }
