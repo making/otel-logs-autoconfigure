@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 
-@AutoConfiguration
+@AutoConfiguration("openTelemetryLogsAutoConfiguration")
 @ConditionalOnClass({ SdkLoggerProvider.class, OpenTelemetry.class })
 public class OpenTelemetryAutoConfiguration {
 
