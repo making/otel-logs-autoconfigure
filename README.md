@@ -9,7 +9,7 @@ This is an experimental project to address https://github.com/spring-projects/sp
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure</artifactId>
-	<version>0.1.1</version>
+	<version>0.2.0</version>
 </dependency>
 ```
 > [!NOTE]
@@ -18,10 +18,10 @@ This is an experimental project to address https://github.com/spring-projects/sp
 ## Configuration Properties for OtlpHttpLogRecordExporter
 
 ```properties
-management.otlp.logs.endpoint=http://localhost:4318/v1/logs
-management.otlp.logs.headers.authorization=Bearer changeme
-management.otlp.logs.compression=gzip
-management.otlp.logs.timeout=10s
+management.otlp.logging.endpoint=http://localhost:4318/v1/logs
+management.otlp.logging.headers.authorization=Bearer changeme
+management.otlp.logging.compression=gzip
+management.otlp.logging.timeout=10s
 ```
 
 If you need a quick and easy-to-use OTLP log receiver, please use [LogN'Roll](https://github.com/making/lognroll).
