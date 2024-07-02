@@ -47,6 +47,7 @@ public class PropertyMigrator implements EnvironmentPostProcessor, Ordered {
 		environment.getPropertySources().forEach(propertySource -> {
 			replace(propertySource, "endpoint", properties);
 			replace(propertySource, "timeout", properties);
+			replace(propertySource, "compression", properties);
 			replace(propertySource, "headers", properties);
 		});
 		if (!properties.isEmpty()) {

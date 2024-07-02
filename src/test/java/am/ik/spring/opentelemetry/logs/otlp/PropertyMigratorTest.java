@@ -18,7 +18,8 @@ class PropertyMigratorTest {
 		MockEnvironment environment = new MockEnvironment();
 		environment.setProperty("management.otlp.logs.endpoint", "a");
 		environment.setProperty("management.otlp.logs.timeout", "b");
-		environment.setProperty("management.otlp.logs.headers", "c");
+		environment.setProperty("management.otlp.logs.compression", "c");
+		environment.setProperty("management.otlp.logs.headers", "d");
 		PropertyMigrator processor = new PropertyMigrator();
 		processor.postProcessEnvironment(environment, application);
 		MutablePropertySources propertySources = environment.getPropertySources();
@@ -26,7 +27,8 @@ class PropertyMigratorTest {
 		assertThat(propertySource).isNotNull();
 		assertThat(environment.getProperty("management.otlp.logging.endpoint")).isEqualTo("a");
 		assertThat(environment.getProperty("management.otlp.logging.timeout")).isEqualTo("b");
-		assertThat(environment.getProperty("management.otlp.logging.headers")).isEqualTo("c");
+		assertThat(environment.getProperty("management.otlp.logging.compression")).isEqualTo("c");
+		assertThat(environment.getProperty("management.otlp.logging.headers")).isEqualTo("d");
 	}
 
 }
