@@ -39,7 +39,7 @@ public class OtlpLogsConfigurations {
 
 		@Bean
 		@ConditionalOnMissingBean
-		@ConditionalOnProperty(prefix = "management.otlp.logs", name = "endpoint")
+		@ConditionalOnProperty(prefix = "management.otlp.logging", name = "endpoint")
 		public OtlpLogsConnectionDetails otlpLogsConnectionDetails(OtlpProperties properties) {
 			return new PropertiesOtlpLogsConnectionDetails(properties);
 		}

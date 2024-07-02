@@ -26,7 +26,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author Jonatan Ivanov
  */
-@ConfigurationProperties("management.otlp.logs")
+@ConfigurationProperties("management.otlp.logging")
 public class OtlpProperties {
 
 	/**

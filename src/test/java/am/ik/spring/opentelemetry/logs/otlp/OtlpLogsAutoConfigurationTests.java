@@ -53,7 +53,7 @@ class OtlpLogsAutoConfigurationTests {
 
 	@Test
 	void shouldSupplyBeans() {
-		this.contextRunner.withPropertyValues("management.otlp.logs.endpoint=http://localhost:4318/v1/logs")
+		this.contextRunner.withPropertyValues("management.otlp.logging.endpoint=http://localhost:4318/v1/logs")
 			.run(context -> {
 				assertThat(context).hasSingleBean(OtlpLogsConnectionDetails.class);
 				assertThat(context).hasSingleBean(OtlpHttpLogRecordExporter.class)
