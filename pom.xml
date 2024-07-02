@@ -6,7 +6,7 @@
 
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure</artifactId>
-	<version>0.2.0</version>
+	<version>0.2.1-SNAPSHOT</version>
 	<name>otel-logs-autoconfigure</name>
 	<description>OTEL Logs AutoConfigure for Spring Boot</description>
 
@@ -16,7 +16,7 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring-boot.version>3.3.0</spring-boot.version>
+		<spring-boot.version>3.3.1</spring-boot.version>
 	</properties>
 	<licenses>
 		<license>
@@ -94,7 +94,7 @@
 			<plugin>
 				<groupId>io.spring.javaformat</groupId>
 				<artifactId>spring-javaformat-maven-plugin</artifactId>
-				<version>0.0.41</version>
+				<version>0.0.42</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -120,7 +120,7 @@
 			<dependency>
 				<groupId>io.opentelemetry.instrumentation</groupId>
 				<artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-				<version>2.4.0-alpha</version>
+				<version>2.5.0-alpha</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

@@ -18,11 +18,13 @@ package am.ik.spring.opentelemetry.logs.otlp;
 
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Logger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor;
+import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.env.EnvironmentPostProcessor;
+import org.springframework.boot.logging.DeferredLog;
+import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
@@ -31,9 +33,10 @@ import org.springframework.core.env.PropertySource;
 
 import static org.springframework.core.env.StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME;
 
-public class PropertyMigrator implements EnvironmentPostProcessor, Ordered {
+public class PropertyMigrator
+		implements EnvironmentPostProcessor, Ordered, ApplicationListener<ApplicationPreparedEvent> {
 
-	private final Logger log = Logger.getLogger(PropertyMigrator.class.getName());
+	private static final DeferredLog log = new DeferredLog();
 
 	public static final String SOURCE_NAME = "otlpLoggingPropertyMigrator";
 
@@ -48,7 +51,7 @@ public class PropertyMigrator implements EnvironmentPostProcessor, Ordered {
 			replace(propertySource, "endpoint", properties);
 			replace(propertySource, "timeout", properties);
 			replace(propertySource, "compression", properties);
-			replace(propertySource, "headers", properties);
+			replacePrefix(propertySource, "headers", properties);
 		});
 		if (!properties.isEmpty()) {
 			MapPropertySource propertySource = new MapPropertySource(SOURCE_NAME, properties);
@@ -64,16 +67,39 @@ public class PropertyMigrator implements EnvironmentPostProcessor, Ordered {
 
 	void replace(PropertySource<?> propertySource, String key, Map<String, Object> properties) {
 		String oldKey = OLD_PREFIX + "." + key;
-		String keyKey = NEW_PREFIX + "." + key;
-		if (propertySource.containsProperty(oldKey) && !propertySource.containsProperty(keyKey)) {
-			log.warning(() -> "The old key '%s' is found. Move the property to '%s'.".formatted(oldKey, keyKey));
-			properties.put(keyKey, propertySource.getProperty(oldKey));
+		String newKey = NEW_PREFIX + "." + key;
+		if (propertySource.containsProperty(oldKey) && !propertySource.containsProperty(newKey)) {
+			log.warn("The old key '%s' is found in '%s'. Move the property to '%s'.".formatted(oldKey,
+					propertySource.getName(), newKey));
+			properties.put(newKey, propertySource.getProperty(oldKey));
 		}
+	}
+
+	void replacePrefix(PropertySource<?> propertySource, String key, Map<String, Object> properties) {
+		String oldKeyPrefix = OLD_PREFIX + "." + key;
+		String newKeyPrefix = NEW_PREFIX + "." + key;
+		if (propertySource.getSource() instanceof Map<?, ?> map) {
+			for (Object k : map.keySet()) {
+				String oldKey = k.toString();
+				if (oldKey.startsWith(oldKeyPrefix)) {
+					String newKey = oldKey.replace(oldKeyPrefix, newKeyPrefix);
+					log.warn("The old key '%s' is found in '%s'. Move the property to '%s'.".formatted(oldKey,
+							propertySource.getName(), newKey));
+					properties.put(newKey, propertySource.getProperty(oldKey));
+				}
+			}
+		}
+		;
 	}
 
 	@Override
 	public int getOrder() {
 		return ConfigDataEnvironmentPostProcessor.ORDER - 5;
+	}
+
+	@Override
+	public void onApplicationEvent(ApplicationPreparedEvent event) {
+		log.replayTo(getClass());
 	}
 
 }
