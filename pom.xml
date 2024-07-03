@@ -6,7 +6,7 @@
 
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure</artifactId>
-	<version>0.2.2-SNAPSHOT</version>
+	<version>0.2.2</version>
 	<name>otel-logs-autoconfigure</name>
 	<description>OTEL Logs AutoConfigure for Spring Boot</description>
 
