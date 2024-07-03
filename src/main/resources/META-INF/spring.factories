@@ -1,4 +1,5 @@
 org.springframework.context.ApplicationListener=\
-am.ik.spring.opentelemetry.logs.logback.LogbackAppenderInstallListener
+am.ik.spring.opentelemetry.logs.logback.LogbackAppenderInstallListener,\
+am.ik.spring.opentelemetry.logs.otlp.PropertyMigrator
 org.springframework.boot.env.EnvironmentPostProcessor=\
 am.ik.spring.opentelemetry.logs.otlp.PropertyMigrator
