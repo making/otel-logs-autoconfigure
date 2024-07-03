@@ -9,7 +9,7 @@ This is an experimental project to address https://github.com/spring-projects/sp
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure</artifactId>
-	<version>0.2.1</version>
+	<version>0.2.2</version>
 </dependency>
 ```
 > [!NOTE]
