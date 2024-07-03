@@ -20,13 +20,13 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor;
 import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.boot.logging.DeferredLog;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
@@ -78,23 +78,32 @@ public class PropertyMigrator
 	void replacePrefix(PropertySource<?> propertySource, String key, Map<String, Object> properties) {
 		String oldKeyPrefix = OLD_PREFIX + "." + key;
 		String newKeyPrefix = NEW_PREFIX + "." + key;
-		if (propertySource.getSource() instanceof Map<?, ?> map) {
+		Object source = propertySource.getSource();
+		if (source instanceof Map<?, ?> map) {
 			for (Object k : map.keySet()) {
-				String oldKey = k.toString();
-				if (oldKey.startsWith(oldKeyPrefix)) {
-					String newKey = oldKey.replace(oldKeyPrefix, newKeyPrefix);
-					log.warn("The old key '%s' is found in '%s'. Move the property to '%s'.".formatted(oldKey,
-							propertySource.getName(), newKey));
-					properties.put(newKey, propertySource.getProperty(oldKey));
-				}
+				replace(propertySource, properties, oldKeyPrefix, newKeyPrefix, k.toString());
 			}
 		}
-		;
+		else if (propertySource instanceof EnumerablePropertySource<?> enumerablePropertySource) {
+			for (String oldKey : enumerablePropertySource.getPropertyNames()) {
+				replace(propertySource, properties, oldKeyPrefix, newKeyPrefix, oldKey);
+			}
+		}
+	}
+
+	private void replace(PropertySource<?> propertySource, Map<String, Object> properties, String oldKeyPrefix,
+			String newKeyPrefix, String oldKey) {
+		if (oldKey.startsWith(oldKeyPrefix)) {
+			String newKey = oldKey.replace(oldKeyPrefix, newKeyPrefix);
+			log.warn("The old key '%s' is found in '%s'. Move the property to '%s'.".formatted(oldKey,
+					propertySource.getName(), newKey));
+			properties.put(newKey, propertySource.getProperty(oldKey));
+		}
 	}
 
 	@Override
 	public int getOrder() {
-		return ConfigDataEnvironmentPostProcessor.ORDER - 5;
+		return Ordered.LOWEST_PRECEDENCE;
 	}
 
 	@Override
