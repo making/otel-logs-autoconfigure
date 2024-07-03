@@ -1,6 +1,6 @@
 # AutoConfiguration for OpenTelemetry Logs
 
-This is an experimental project to address https://github.com/spring-projects/spring-boot/issues/37355.
+This is an experimental project to address https://github.com/spring-projects/spring-boot/pull/40961.
 
 * Autoconfigures `SdkLoggerProvider` and `OtlpHttpLogRecordExporter`.
 * Autoconfigures the [Logback Appender](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library).
