@@ -20,10 +20,10 @@ import ch.qos.logback.classic.Logger;
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
+import org.springframework.boot.context.event.ApplicationFailedEvent;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.logging.LoggingApplicationListener;
 import org.springframework.boot.context.properties.bind.Binder;
@@ -74,8 +74,13 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 			openTelemetryAppender.start();
 			rootLogger.addAppender(openTelemetryAppender);
 		}
-		else if (event instanceof ApplicationReadyEvent) {
-			ConfigurableApplicationContext applicationContext = ((ApplicationReadyEvent) event).getApplicationContext();
+		else if (event instanceof ApplicationReadyEvent applicationReadyEvent) {
+			ConfigurableApplicationContext applicationContext = applicationReadyEvent.getApplicationContext();
+			ObjectProvider<OpenTelemetry> openTelemetry = applicationContext.getBeanProvider(OpenTelemetry.class);
+			openTelemetry.ifAvailable(OpenTelemetryAppender::install);
+		}
+		else if (event instanceof ApplicationFailedEvent applicationFailedEvent) {
+			ConfigurableApplicationContext applicationContext = applicationFailedEvent.getApplicationContext();
 			ObjectProvider<OpenTelemetry> openTelemetry = applicationContext.getBeanProvider(OpenTelemetry.class);
 			openTelemetry.ifAvailable(OpenTelemetryAppender::install);
 		}
