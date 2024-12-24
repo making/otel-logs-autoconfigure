@@ -3,8 +3,6 @@
 > [!WARNING]
 > **For versions prior to Spring 3.4 use otel-logs-autoconfigure 0.2.x**
 
-This is an experimental project to address https://github.com/spring-projects/spring-boot/pull/40961.
-
 * Autoconfigures the [Logback Appender](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library).
 
 ```xml
