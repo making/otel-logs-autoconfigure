@@ -9,7 +9,7 @@
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 </dependency>
 ```
 
