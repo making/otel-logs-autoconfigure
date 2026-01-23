@@ -17,15 +17,34 @@ on:
     - src/**
     - pom.xml
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        spring-boot-version: ['3.5.10', '4.0.2', '4.1.0-M1']
+    name: Test (Spring Boot ${{ matrix.spring-boot-version }})
+    steps:
+    - uses: actions/checkout@v5
+    - name: Set up JDK 17
+      uses: actions/setup-java@v5
+      with:
+        java-version: '17'
+        distribution: 'liberica'
+        cache: maven
+    - name: Unit Tests
+      run: ./mvnw -V --no-transfer-progress clean test -Dspring-boot.version=${{ matrix.spring-boot-version }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name != 'pull_request'
     permissions:
       id-token: write
       contents: read
     steps:
     - uses: actions/checkout@v6
     - name: Import Secrets
-      if: github.event_name != 'pull_request'
       id: secrets
       uses: hashicorp/vault-action@v3.4.0
       with:
@@ -39,7 +58,6 @@ jobs:
           kv/data/cicd/gpg secring | GPG_SECRING ;
           kv/data/cicd/gpg passphrase | GPG_PASSPHRASE ;
     - name: Set up JDK 17
-      if: github.event_name != 'pull_request'
       uses: actions/setup-java@v5
       with:
         java-version: '17'
@@ -47,17 +65,7 @@ jobs:
         cache: maven
         gpg-private-key: ${{ steps.secrets.outputs.GPG_SECRING }}
         gpg-passphrase: ${{ steps.secrets.outputs.GPG_PASSPHRASE }}
-    - name: Set up JDK 17 (PR)
-      if: github.event_name == 'pull_request'
-      uses: actions/setup-java@v5
-      with:
-        java-version: '17'
-        distribution: 'liberica'
-        cache: maven
-    - name: Unit Tests
-      run: ./mvnw -V --no-transfer-progress clean test
     - name: Generates Maven Settings
-      if: github.event_name != 'pull_request'
       uses: s4u/maven-settings-action@v4.0.0
       with:
         servers: |
@@ -67,7 +75,6 @@ jobs:
               "password": "${{ steps.secrets.outputs.MAVEN_CENTRAL_PASSWORD }}"
           }]
     - name: Deploy to Maven Central
-      if: github.event_name != 'pull_request'
       run: |
         set -e
         mvn -V \
@@ -80,6 +87,6 @@ jobs:
             -Dgpg.passphrase=${GPG_PASSPHRASE} \
             -DskipTests=true
     - name: Revoke token
-      if: always() && github.event_name != 'pull_request'
+      if: always()
       run: |
         curl -X POST -s -H "X-Vault-Token: ${VAULT_TOKEN}" ${{ secrets.VAULT_ADDR }}/v1/auth/token/revoke-self || true
