@@ -43,7 +43,8 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 			return false;
 		}
 		return ApplicationEnvironmentPreparedEvent.class.isAssignableFrom(eventType.getRawClass())
-				|| ApplicationReadyEvent.class.isAssignableFrom(eventType.getRawClass());
+				|| ApplicationReadyEvent.class.isAssignableFrom(eventType.getRawClass())
+				|| ApplicationFailedEvent.class.isAssignableFrom(eventType.getRawClass());
 	}
 
 	@Override
