@@ -43,6 +43,11 @@ management.opentelemetry.instrumentation.logback-appender.capture-key-value-pair
 management.opentelemetry.instrumentation.logback-appender.capture-logger-context=false
 management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute=false
 management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes= # comma-separated names or `*`
+management.opentelemetry.instrumentation.logback-appender.capture-event-name=false
+management.opentelemetry.instrumentation.logback-appender.capture-template=false
+management.opentelemetry.instrumentation.logback-appender.capture-arguments=false
+management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes=false
+management.opentelemetry.instrumentation.logback-appender.capture-logstash-structured-arguments=false
 management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install=1000
 ```
 

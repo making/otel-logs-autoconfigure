@@ -112,6 +112,23 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 			.bind("management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install",
 					Integer.class)
 			.orElse(1000);
+		boolean captureEventName = binder
+			.bind("management.opentelemetry.instrumentation.logback-appender.capture-event-name", Boolean.class)
+			.orElse(false);
+		boolean captureTemplate = binder
+			.bind("management.opentelemetry.instrumentation.logback-appender.capture-template", Boolean.class)
+			.orElse(false);
+		boolean captureArguments = binder
+			.bind("management.opentelemetry.instrumentation.logback-appender.capture-arguments", Boolean.class)
+			.orElse(false);
+		boolean captureLogstashMarkerAttributes = binder
+			.bind("management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes",
+					Boolean.class)
+			.orElse(false);
+		boolean captureLogstashStructuredArguments = binder
+			.bind("management.opentelemetry.instrumentation.logback-appender.capture-logstash-structured-arguments",
+					Boolean.class)
+			.orElse(false);
 		openTelemetryAppender.setCaptureExperimentalAttributes(captureExperimentalAttributes);
 		openTelemetryAppender.setCaptureCodeAttributes(captureCodeAttributes);
 		openTelemetryAppender.setCaptureMarkerAttribute(captureMarkerAttribute);
@@ -119,6 +136,11 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 		openTelemetryAppender.setCaptureLoggerContext(captureLoggerContext);
 		openTelemetryAppender.setCaptureMdcAttributes(captureMdcAttributes);
 		openTelemetryAppender.setNumLogsCapturedBeforeOtelInstall(numLogsCapturedBeforeOtelInstall);
+		openTelemetryAppender.setCaptureEventName(captureEventName);
+		openTelemetryAppender.setCaptureTemplate(captureTemplate);
+		openTelemetryAppender.setCaptureArguments(captureArguments);
+		openTelemetryAppender.setCaptureLogstashMarkerAttributes(captureLogstashMarkerAttributes);
+		openTelemetryAppender.setCaptureLogstashStructuredArguments(captureLogstashStructuredArguments);
 	}
 
 	@Override

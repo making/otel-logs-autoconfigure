@@ -6,7 +6,17 @@
   ],
   "properties": [
     {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-arguments",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
       "name": "management.opentelemetry.instrumentation.logback-appender.capture-code-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-event-name",
       "type": "java.lang.Boolean",
       "defaultValue": false
     },
@@ -26,6 +36,16 @@
       "defaultValue": false
     },
     {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-logstash-structured-arguments",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
       "name": "management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute",
       "type": "java.lang.Boolean",
       "defaultValue": false
@@ -33,6 +53,11 @@
     {
       "name": "management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes",
       "type": "java.lang.String"
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.logback-appender.capture-template",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
     },
     {
       "name": "management.opentelemetry.instrumentation.logback-appender.enabled",
