@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>am.ik.spring.opentelemetry</groupId>
+    <artifactId>otel-logs-autoconfigure-parent</artifactId>
+    <version>0.6.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>otel-logs-autoconfigure</artifactId>
+  <name>otel-logs-autoconfigure</name>
+  <description>[Deprecated] Use otel-logs-autoconfigure-logback instead. This artifact exists for backward compatibility and will be removed in a future release.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>am.ik.spring.opentelemetry</groupId>
+      <artifactId>otel-logs-autoconfigure-logback</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
