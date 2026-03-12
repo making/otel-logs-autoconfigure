@@ -6,7 +6,8 @@ on:
     - develop
     - main
     paths:
-    - src/**
+    - otel-logs-autoconfigure-*/src/**
+    - otel-logs-autoconfigure-*/pom.xml
     - pom.xml
     - .github/workflows/ci.yaml
   pull_request:
@@ -14,7 +15,8 @@ on:
     - develop
     - main
     paths:
-    - src/**
+    - otel-logs-autoconfigure-*/src/**
+    - otel-logs-autoconfigure-*/pom.xml
     - pom.xml
 jobs:
   test:
