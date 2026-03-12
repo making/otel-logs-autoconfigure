@@ -131,6 +131,11 @@ class LogbackAppenderInstallListenerIntegrationTest {
 		try (ConfigurableApplicationContext context = application.run(
 				"--management.opentelemetry.instrumentation.logback-appender.capture-code-attributes=true",
 				"--management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute=true",
+				"--management.opentelemetry.instrumentation.logback-appender.capture-event-name=true",
+				"--management.opentelemetry.instrumentation.logback-appender.capture-template=true",
+				"--management.opentelemetry.instrumentation.logback-appender.capture-arguments=true",
+				"--management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes=true",
+				"--management.opentelemetry.instrumentation.logback-appender.capture-logstash-structured-arguments=true",
 				"--management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install=500")) {
 			OpenTelemetryAppender appender = findOpenTelemetryAppender();
 			assertThat(appender).isNotNull();
