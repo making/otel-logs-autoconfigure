@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package am.ik.spring.opentelemetry.logs.log4j;
+package am.ik.spring.opentelemetry.logs.log4j2;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -49,7 +49,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class Log4jAppenderInstallListenerIntegrationTest {
+class Log4j2AppenderInstallListenerIntegrationTest {
 
 	@BeforeEach
 	void setUp() {
@@ -115,7 +115,7 @@ class Log4jAppenderInstallListenerIntegrationTest {
 		application.setWebApplicationType(WebApplicationType.NONE);
 
 		try (ConfigurableApplicationContext context = application
-			.run("--management.opentelemetry.instrumentation.log4j-appender.enabled=false")) {
+			.run("--management.opentelemetry.instrumentation.log4j2-appender.enabled=false")) {
 			OpenTelemetryAppender appender = findOpenTelemetryAppender();
 			assertThat(appender).isNull();
 		}
@@ -127,9 +127,9 @@ class Log4jAppenderInstallListenerIntegrationTest {
 		application.setWebApplicationType(WebApplicationType.NONE);
 
 		try (ConfigurableApplicationContext context = application.run(
-				"--management.opentelemetry.instrumentation.log4j-appender.capture-code-attributes=true",
-				"--management.opentelemetry.instrumentation.log4j-appender.capture-marker-attribute=true",
-				"--management.opentelemetry.instrumentation.log4j-appender.num-logs-captured-before-otel-install=500")) {
+				"--management.opentelemetry.instrumentation.log4j2-appender.capture-code-attributes=true",
+				"--management.opentelemetry.instrumentation.log4j2-appender.capture-marker-attribute=true",
+				"--management.opentelemetry.instrumentation.log4j2-appender.num-logs-captured-before-otel-install=500")) {
 			OpenTelemetryAppender appender = findOpenTelemetryAppender();
 			assertThat(appender).isNotNull();
 			assertThat(appender.isStarted()).isTrue();

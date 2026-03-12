@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package am.ik.spring.opentelemetry.logs.log4j;
+package am.ik.spring.opentelemetry.logs.log4j2;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.instrumentation.log4j.appender.v2_17.OpenTelemetryAppender;
@@ -41,9 +41,9 @@ import org.springframework.util.ClassUtils;
 /**
  * An {@link GenericApplicationListener} that installs the OpenTelemetry Log4j2 appender.
  */
-public class Log4jAppenderInstallListener implements GenericApplicationListener {
+public class Log4j2AppenderInstallListener implements GenericApplicationListener {
 
-	private static final String APPENDER_NAME = "OpenTelemetryLog4jAppender";
+	private static final String APPENDER_NAME = "OpenTelemetryLog4j2Appender";
 
 	@Override
 	public boolean supportsEventType(ResolvableType eventType) {
@@ -72,7 +72,7 @@ public class Log4jAppenderInstallListener implements GenericApplicationListener 
 			ConfigurableEnvironment environment = ((ApplicationEnvironmentPreparedEvent) event).getEnvironment();
 			Binder binder = Binder.get(environment);
 			boolean enabled = binder
-				.bind("management.opentelemetry.instrumentation.log4j-appender.enabled", Boolean.class)
+				.bind("management.opentelemetry.instrumentation.log4j2-appender.enabled", Boolean.class)
 				.orElse(true);
 			if (!enabled) {
 				return;
@@ -111,7 +111,7 @@ public class Log4jAppenderInstallListener implements GenericApplicationListener 
 	}
 
 	void configureAppender(OpenTelemetryAppender.Builder<?> builder, Binder binder) {
-		String prefix = "management.opentelemetry.instrumentation.log4j-appender";
+		String prefix = "management.opentelemetry.instrumentation.log4j2-appender";
 		boolean captureExperimentalAttributes = binder.bind(prefix + ".capture-experimental-attributes", Boolean.class)
 			.orElse(false);
 		boolean captureCodeAttributes = binder.bind(prefix + ".capture-code-attributes", Boolean.class).orElse(false);

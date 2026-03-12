@@ -1,0 +1,49 @@
+{
+  "groups": [
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-code-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-context-data-attributes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-event-name",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-experimental-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-map-message-attributes",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.capture-marker-attribute",
+      "type": "java.lang.Boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true
+    },
+    {
+      "name": "management.opentelemetry.instrumentation.log4j2-appender.num-logs-captured-before-otel-install",
+      "type": "java.lang.Integer",
+      "defaultValue": 1000
+    }
+  ],
+  "hints": []
+}

@@ -1,2 +1,0 @@
-org.springframework.context.ApplicationListener=\
-am.ik.spring.opentelemetry.logs.log4j.Log4jAppenderInstallListener
