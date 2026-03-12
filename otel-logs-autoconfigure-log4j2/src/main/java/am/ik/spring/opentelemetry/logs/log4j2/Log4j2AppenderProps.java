@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package am.ik.spring.opentelemetry.logs.log4j;
+package am.ik.spring.opentelemetry.logs.log4j2;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "management.opentelemetry.instrumentation.log4j-appender")
-public class Log4jAppenderProps {
+@ConfigurationProperties(prefix = "management.opentelemetry.instrumentation.log4j2-appender")
+public class Log4j2AppenderProps {
 
 }

@@ -18,7 +18,7 @@ Supports Spring Boot 3.5 and 4.0+.
 | Module | Description |
 |--------|------------|
 | `otel-logs-autoconfigure-logback` | [Logback Appender](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library) autoconfiguration |
-| `otel-logs-autoconfigure-log4j` | [Log4j2 Appender](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library) autoconfiguration |
+| `otel-logs-autoconfigure-log4j2` | [Log4j2 Appender](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library) autoconfiguration |
 | `otel-logs-autoconfigure` | Deprecated. Delegates to `otel-logs-autoconfigure-logback` for backward compatibility. |
 
 ## Logback
@@ -56,7 +56,7 @@ management.opentelemetry.instrumentation.logback-appender.num-logs-captured-befo
 ```xml
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
-	<artifactId>otel-logs-autoconfigure-log4j</artifactId>
+	<artifactId>otel-logs-autoconfigure-log4j2</artifactId>
 	<version>0.6.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -85,14 +85,14 @@ When using Spring Boot with Log4j2, make sure to exclude the default logging sta
 See https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library for the details.
 
 ```properties
-management.opentelemetry.instrumentation.log4j-appender.enabled=true
-management.opentelemetry.instrumentation.log4j-appender.capture-code-attributes=false
-management.opentelemetry.instrumentation.log4j-appender.capture-context-data-attributes= # comma-separated names or `*`
-management.opentelemetry.instrumentation.log4j-appender.capture-event-name=false
-management.opentelemetry.instrumentation.log4j-appender.capture-experimental-attributes=false
-management.opentelemetry.instrumentation.log4j-appender.capture-map-message-attributes=false
-management.opentelemetry.instrumentation.log4j-appender.capture-marker-attribute=false
-management.opentelemetry.instrumentation.log4j-appender.num-logs-captured-before-otel-install=1000
+management.opentelemetry.instrumentation.log4j2-appender.enabled=true
+management.opentelemetry.instrumentation.log4j2-appender.capture-code-attributes=false
+management.opentelemetry.instrumentation.log4j2-appender.capture-context-data-attributes= # comma-separated names or `*`
+management.opentelemetry.instrumentation.log4j2-appender.capture-event-name=false
+management.opentelemetry.instrumentation.log4j2-appender.capture-experimental-attributes=false
+management.opentelemetry.instrumentation.log4j2-appender.capture-map-message-attributes=false
+management.opentelemetry.instrumentation.log4j2-appender.capture-marker-attribute=false
+management.opentelemetry.instrumentation.log4j2-appender.num-logs-captured-before-otel-install=1000
 ```
 
 ## Migration from `otel-logs-autoconfigure`

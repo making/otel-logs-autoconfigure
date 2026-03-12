@@ -13,7 +13,7 @@
 
   <modules>
     <module>otel-logs-autoconfigure-logback</module>
-    <module>otel-logs-autoconfigure-log4j</module>
+    <module>otel-logs-autoconfigure-log4j2</module>
     <module>otel-logs-autoconfigure-legacy</module>
   </modules>
 

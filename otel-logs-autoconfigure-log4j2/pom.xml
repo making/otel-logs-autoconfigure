@@ -10,8 +10,8 @@
     <version>0.6.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>otel-logs-autoconfigure-log4j</artifactId>
-  <name>otel-logs-autoconfigure-log4j</name>
+  <artifactId>otel-logs-autoconfigure-log4j2</artifactId>
+  <name>otel-logs-autoconfigure-log4j2</name>
   <description>OTEL Logs AutoConfigure for Spring Boot - Log4j2 Appender</description>
 
   <dependencies>
