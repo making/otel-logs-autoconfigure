@@ -27,7 +27,7 @@ Supports Spring Boot 3.5 and 4.0+.
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure-logback</artifactId>
-	<version>0.6.0</version>
+	<version>0.7.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -57,7 +57,7 @@ management.opentelemetry.instrumentation.logback-appender.num-logs-captured-befo
 <dependency>
 	<groupId>am.ik.spring.opentelemetry</groupId>
 	<artifactId>otel-logs-autoconfigure-log4j2</artifactId>
-	<version>0.6.0</version>
+	<version>0.7.0-SNAPSHOT</version>
 </dependency>
 ```
 
