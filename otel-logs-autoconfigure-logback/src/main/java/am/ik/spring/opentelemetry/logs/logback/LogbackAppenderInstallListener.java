@@ -71,7 +71,7 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 			if (!enabled) {
 				return;
 			}
-			this.configureOpenTelemetryAppender(openTelemetryAppender, binder);
+			this.configureAppender(openTelemetryAppender, binder);
 			openTelemetryAppender.start();
 			rootLogger.addAppender(openTelemetryAppender);
 		}
@@ -87,47 +87,28 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 		}
 	}
 
-	void configureOpenTelemetryAppender(OpenTelemetryAppender openTelemetryAppender, Binder binder) {
-		boolean captureExperimentalAttributes = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-experimental-attributes",
-					Boolean.class)
+	void configureAppender(OpenTelemetryAppender openTelemetryAppender, Binder binder) {
+		String prefix = "management.opentelemetry.instrumentation.logback-appender";
+		boolean captureExperimentalAttributes = binder.bind(prefix + ".capture-experimental-attributes", Boolean.class)
 			.orElse(false);
-		boolean captureCodeAttributes = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-code-attributes", Boolean.class)
-			.orElse(false);
-		boolean captureMarkerAttribute = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute", Boolean.class)
-			.orElse(false);
+		boolean captureCodeAttributes = binder.bind(prefix + ".capture-code-attributes", Boolean.class).orElse(false);
+		boolean captureMarkerAttribute = binder.bind(prefix + ".capture-marker-attribute", Boolean.class).orElse(false);
 		boolean captureKeyValuePairAttributes = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-key-value-pair-attributes",
-					Boolean.class)
+			.bind(prefix + ".capture-key-value-pair-attributes", Boolean.class)
 			.orElse(false);
-		boolean captureLoggerContext = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-logger-context", Boolean.class)
-			.orElse(false);
-		String captureMdcAttributes = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes", String.class)
-			.orElse(null);
+		boolean captureLoggerContext = binder.bind(prefix + ".capture-logger-context", Boolean.class).orElse(false);
+		String captureMdcAttributes = binder.bind(prefix + ".capture-mdc-attributes", String.class).orElse(null);
 		int numLogsCapturedBeforeOtelInstall = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.num-logs-captured-before-otel-install",
-					Integer.class)
+			.bind(prefix + ".num-logs-captured-before-otel-install", Integer.class)
 			.orElse(1000);
-		boolean captureEventName = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-event-name", Boolean.class)
-			.orElse(false);
-		boolean captureTemplate = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-template", Boolean.class)
-			.orElse(false);
-		boolean captureArguments = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-arguments", Boolean.class)
-			.orElse(false);
+		boolean captureEventName = binder.bind(prefix + ".capture-event-name", Boolean.class).orElse(false);
+		boolean captureTemplate = binder.bind(prefix + ".capture-template", Boolean.class).orElse(false);
+		boolean captureArguments = binder.bind(prefix + ".capture-arguments", Boolean.class).orElse(false);
 		boolean captureLogstashMarkerAttributes = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes",
-					Boolean.class)
+			.bind(prefix + ".capture-logstash-marker-attributes", Boolean.class)
 			.orElse(false);
 		boolean captureLogstashStructuredArguments = binder
-			.bind("management.opentelemetry.instrumentation.logback-appender.capture-logstash-structured-arguments",
-					Boolean.class)
+			.bind(prefix + ".capture-logstash-structured-arguments", Boolean.class)
 			.orElse(false);
 		openTelemetryAppender.setCaptureExperimentalAttributes(captureExperimentalAttributes);
 		openTelemetryAppender.setCaptureCodeAttributes(captureCodeAttributes);
