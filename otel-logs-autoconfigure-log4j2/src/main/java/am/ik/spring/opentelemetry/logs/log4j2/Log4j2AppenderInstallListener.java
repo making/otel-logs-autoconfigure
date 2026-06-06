@@ -120,19 +120,17 @@ public class Log4j2AppenderInstallListener implements GenericApplicationListener
 		boolean captureMarkerAttribute = binder.bind(prefix + ".capture-marker-attribute", Boolean.class).orElse(false);
 		String captureContextDataAttributes = binder.bind(prefix + ".capture-context-data-attributes", String.class)
 			.orElse(null);
-		boolean captureEventName = binder.bind(prefix + ".capture-event-name", Boolean.class).orElse(false);
 		int numLogsCapturedBeforeOtelInstall = binder
 			.bind(prefix + ".num-logs-captured-before-otel-install", Integer.class)
 			.orElse(1000);
 
 		builder.setCaptureExperimentalAttributes(captureExperimentalAttributes);
-		builder.captureCodeAttributes(captureCodeAttributes);
+		builder.setCaptureCodeAttributes(captureCodeAttributes);
 		builder.setCaptureMapMessageAttributes(captureMapMessageAttributes);
 		builder.setCaptureMarkerAttribute(captureMarkerAttribute);
 		if (captureContextDataAttributes != null) {
 			builder.setCaptureContextDataAttributes(captureContextDataAttributes);
 		}
-		builder.setCaptureEventName(captureEventName);
 		builder.setNumLogsCapturedBeforeOtelInstall(numLogsCapturedBeforeOtelInstall);
 	}
 
