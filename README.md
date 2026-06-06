@@ -9,7 +9,7 @@ Supports Spring Boot 3.5 and 4.0+.
 > If you are using Spring Boot 3.5, override the OpenTelemetry version in your `pom.xml`:
 > ```xml
 > <properties>
-> 	<opentelemetry.version>1.55.0</opentelemetry.version>
+> 	<opentelemetry.version>1.63.0</opentelemetry.version>
 > </properties>
 > ```
 
@@ -43,7 +43,6 @@ management.opentelemetry.instrumentation.logback-appender.capture-key-value-pair
 management.opentelemetry.instrumentation.logback-appender.capture-logger-context=false
 management.opentelemetry.instrumentation.logback-appender.capture-marker-attribute=false
 management.opentelemetry.instrumentation.logback-appender.capture-mdc-attributes= # comma-separated names or `*`
-management.opentelemetry.instrumentation.logback-appender.capture-event-name=false
 management.opentelemetry.instrumentation.logback-appender.capture-template=false
 management.opentelemetry.instrumentation.logback-appender.capture-arguments=false
 management.opentelemetry.instrumentation.logback-appender.capture-logstash-marker-attributes=false
@@ -88,7 +87,6 @@ See https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/ma
 management.opentelemetry.instrumentation.log4j2-appender.enabled=true
 management.opentelemetry.instrumentation.log4j2-appender.capture-code-attributes=false
 management.opentelemetry.instrumentation.log4j2-appender.capture-context-data-attributes= # comma-separated names or `*`
-management.opentelemetry.instrumentation.log4j2-appender.capture-event-name=false
 management.opentelemetry.instrumentation.log4j2-appender.capture-experimental-attributes=false
 management.opentelemetry.instrumentation.log4j2-appender.capture-map-message-attributes=false
 management.opentelemetry.instrumentation.log4j2-appender.capture-marker-attribute=false
