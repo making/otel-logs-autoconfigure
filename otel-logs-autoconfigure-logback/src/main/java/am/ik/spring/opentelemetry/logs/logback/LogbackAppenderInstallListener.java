@@ -101,7 +101,6 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 		int numLogsCapturedBeforeOtelInstall = binder
 			.bind(prefix + ".num-logs-captured-before-otel-install", Integer.class)
 			.orElse(1000);
-		boolean captureEventName = binder.bind(prefix + ".capture-event-name", Boolean.class).orElse(false);
 		boolean captureTemplate = binder.bind(prefix + ".capture-template", Boolean.class).orElse(false);
 		boolean captureArguments = binder.bind(prefix + ".capture-arguments", Boolean.class).orElse(false);
 		boolean captureLogstashMarkerAttributes = binder
@@ -117,7 +116,6 @@ public class LogbackAppenderInstallListener implements GenericApplicationListene
 		openTelemetryAppender.setCaptureLoggerContext(captureLoggerContext);
 		openTelemetryAppender.setCaptureMdcAttributes(captureMdcAttributes);
 		openTelemetryAppender.setNumLogsCapturedBeforeOtelInstall(numLogsCapturedBeforeOtelInstall);
-		openTelemetryAppender.setCaptureEventName(captureEventName);
 		openTelemetryAppender.setCaptureTemplate(captureTemplate);
 		openTelemetryAppender.setCaptureArguments(captureArguments);
 		openTelemetryAppender.setCaptureLogstashMarkerAttributes(captureLogstashMarkerAttributes);
