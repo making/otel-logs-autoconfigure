@@ -27,7 +27,7 @@ jobs:
         spring-boot-version: ['3.5.14', '4.0.6', '4.1.0-RC1']
     name: Test (Spring Boot ${{ matrix.spring-boot-version }})
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up JDK 17
       uses: actions/setup-java@v5
       with:
@@ -45,7 +45,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Import Secrets
       id: secrets
       uses: hashicorp/vault-action@v3.4.0
