@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        spring-boot-version: ['3.5.14', '4.0.6', '4.1.0-RC1']
+        spring-boot-version: ['3.5.15', '4.0.7', '4.1.0']
     name: Test (Spring Boot ${{ matrix.spring-boot-version }})
     steps:
     - uses: actions/checkout@v7
