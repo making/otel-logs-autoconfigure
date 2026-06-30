@@ -5,8 +5,8 @@ Autoconfigures the OpenTelemetry log appender for Spring Boot. Supports both Log
 Supports Spring Boot 3.5 and 4.0+.
 
 > [!NOTE]
-> Spring Boot 3.5 manages an older version of the OpenTelemetry Java SDK that is not compatible with this library.
-> If you are using Spring Boot 3.5, override the OpenTelemetry version in your `pom.xml`:
+> As of otel-logs-autoconfigure 0.7.0, Spring Boot (3.5-4.1) manages an older version of the OpenTelemetry Java SDK that is not compatible with this library.
+> If you are using these version of Spring Boot, override the OpenTelemetry version in your `pom.xml`:
 > ```xml
 > <properties>
 > 	<opentelemetry.version>1.63.0</opentelemetry.version>
