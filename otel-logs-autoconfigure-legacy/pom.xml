@@ -27,10 +27,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <!-- Pinned to 2.6 to avoid "You have to use a classifier to attach supplemental artifacts"
+        <!-- Pinned to 3.5.1 to avoid "You have to use a classifier to attach supplemental artifacts"
              error with 3.x when central-publishing-maven-plugin (extensions=true) sets the main
              artifact before jar:jar runs during deploy. -->
-        <version>2.6</version>
+        <version>3.5.1</version>
       </plugin>
       <plugin>
         <groupId>org.sonatype.central</groupId>
