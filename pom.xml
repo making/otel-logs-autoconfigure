@@ -89,6 +89,23 @@
         <artifactId>central-publishing-maven-plugin</artifactId>
       </plugin>
       <plugin>
+        <!-- Sign artifacts during the build so that a single `mvn deploy` releases the project.
+             Invoking gpg:sign on the command line together with `package` made Maven run the
+             lifecycle twice in one session, which breaks modules that only produce an empty jar. -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
         <version>0.0.48</version>
