@@ -2,16 +2,17 @@
 
 Autoconfigures the OpenTelemetry log appender for Spring Boot. Supports both Logback and Log4j2.
 
-Supports Spring Boot 3.5 and 4.0+.
+Supports Spring Boot 3.5 and 4.0-4.2.
 
 > [!NOTE]
-> As of otel-logs-autoconfigure 0.7.0, Spring Boot (3.5-4.1) manages an older version of the OpenTelemetry Java SDK that is not compatible with this library.
+> As of otel-logs-autoconfigure 0.8.0, Spring Boot (3.5-4.1) manages an older version of the OpenTelemetry Java SDK that is not compatible with this library.
 > If you are using these version of Spring Boot, override the OpenTelemetry version in your `pom.xml`:
 > ```xml
 > <properties>
-> 	<opentelemetry.version>1.63.0</opentelemetry.version>
+> 	<opentelemetry.version>1.68.0</opentelemetry.version>
 > </properties>
 > ```
+> Spring Boot 4.2 manages OpenTelemetry 1.68.0, so no override is needed there.
 
 ## Modules
 
