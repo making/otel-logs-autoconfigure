@@ -23,7 +23,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring-boot.version>3.5.14</spring-boot.version>
+    <spring-boot.version>3.5.16</spring-boot.version>
   </properties>
   <licenses>
     <license>
@@ -110,14 +110,14 @@
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.65.0</version>
+        <version>1.68.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry.instrumentation</groupId>
         <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-        <version>2.31.1-alpha</version>
+        <version>2.34.0-alpha</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
